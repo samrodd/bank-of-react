@@ -98,7 +98,7 @@ addDebit = (e) => {
 
   render() {
 
-    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
+    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance.toFixed(2)}/>);
     const UserProfileComponent = () => (
       <UserProfile userName = {this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}/>
     );
@@ -106,7 +106,7 @@ addDebit = (e) => {
     const { debits } = this.state;
     const DebitsComponent = () => (
       <div>     
-        <Debits addDebit={this.addDebit} debits={debits}/>
+        <Debits  accountBalance={this.state.accountBalance.toFixed(2)} addDebit={this.addDebit} debits={debits}/>
 
       </div>
      
@@ -115,7 +115,7 @@ addDebit = (e) => {
     const { credits } = this.state;
 
     const CreditsComponent = () => (
-     <Credits addCredit={this.addCredit} credits={credits}/>
+     <Credits accountBalance={this.state.accountBalance.toFixed(2)} addCredit={this.addCredit} credits={credits}/>
     );
 
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn}/>)
