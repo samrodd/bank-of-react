@@ -22,15 +22,11 @@ const Debits = (props) => {
             <input
                 name="description"
                 label="Description"
-           //     onChange={this.handleChange}
             />
             <div>Amount: </div>
             <input
                 name="amount"
                 label="Amount"
-
-         //       onChange={this.handleChange}
-
             />
             <button type="submit">Submit</button>
         </form>
