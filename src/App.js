@@ -42,54 +42,51 @@ class App extends Component {
     this.setState({debits, credits, accountBalance});
   }
 
-/*
-  if this is your view in the debits component:        <form onSubmit={addDebit}>
 
-  <input type="text" name="description" />
-
-  <input type="number" name="amount" />
-
-  <button type="submit">Add Debit</button>
-
-</form>
-
-
-
-then in App.js, you should be able to access those values in addDebit like so:
-
-const description = e.target[0].value
-
-const amount = Number(e.target[1].value) 
-*/
 addDebit = (e) => {
   //send to debits view via props
   e.preventDefault();
+//log target values 
   console.log(e.target[0].value);
   console.log(e.target[1].value);
   let { debits } = this.state;
+  //get the credits from state
   const current = new Date();
+  //create current date with correct formatting from the date object above 
   const currentDate = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-
+  //create variables from user inputs
   const newDescInput =  e.target[0].value; //this.state.newDescription;
   const newAmountVal = e.target[1].value;//this.state.newAmount;
+  //push new value to array
   debits.push({'id': 1, 'description': newDescInput, 'amount': newAmountVal, 'date':currentDate});
-  this.setState({debits: debits});
+  //update account balance
+  let newAccountBalance = this.state.accountBalance - newAmountVal;
+  //update state
+  this.setState({debits: debits, accountBalance: newAccountBalance});
 
 }
 
   addCredit = (e) => {
     //send to credits view via props
     e.preventDefault();
+    //log target values 
     console.log(e.target[0].value);
     console.log(e.target[1].value);
+    //get the credits from state
     let { credits } = this.state;
+    //create date object
     const current = new Date();
+    //create current date with correct formatting from the date object above 
     const currentDate = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-  
-    const newDescInput =  e.target[0].value; //this.state.newDescription;
-    const newAmountVal = e.target[1].value;//this.state.newAmount;
+    //create variables from user inputs
+    const newDescInput =  e.target[0].value; 
+    const newAmountVal = e.target[1].value;
+    //push new value to array
     credits.push({'id': 1, 'description': newDescInput, 'amount': newAmountVal, 'date':currentDate});
-    this.setState({credits: credits});
+    //update account balance
+    let newAccountBalance = this.state.accountBalance + parseFloat(newAmountVal,10);
+    //update state
+    this.setState({credits: credits, accountBalance: newAccountBalance});
 
   }
 
@@ -101,7 +98,7 @@ addDebit = (e) => {
 
   render() {
 
-    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
+    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance.toFixed(2)}/>);
     const UserProfileComponent = () => (
       <UserProfile userName = {this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}/>
     );
@@ -109,7 +106,7 @@ addDebit = (e) => {
     const { debits } = this.state;
     const DebitsComponent = () => (
       <div>     
-        <Debits addDebit={this.addDebit} debits={debits}/>
+        <Debits  accountBalance={this.state.accountBalance.toFixed(2)} addDebit={this.addDebit} debits={debits}/>
 
       </div>
      
@@ -118,7 +115,7 @@ addDebit = (e) => {
     const { credits } = this.state;
 
     const CreditsComponent = () => (
-     <Credits addCredit={this.addCredit} credits={credits}/>
+     <Credits accountBalance={this.state.accountBalance.toFixed(2)} addCredit={this.addCredit} credits={credits}/>
     );
 
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn}/>)
