@@ -25,6 +25,8 @@ const Credits = (props) => {
                 />
                 <button type="submit">Submit</button>
             </form>
+            <Link to="/">Return to Home</Link>
+
         </div>
 
         
