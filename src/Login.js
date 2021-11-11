@@ -31,11 +31,13 @@ class LogIn extends Component {
 
   render () {
     if (this.state.redirect) {
+      //send user to userProfile on redirect
       return (<Redirect to="/userProfile"/>)
     }
 
     return (
       <div>
+        <h1>Bank of React Login</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="userName">User Name</label>
