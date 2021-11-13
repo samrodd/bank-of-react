@@ -14,7 +14,7 @@
               <Link to="/bank-of-react//debits">Debits</Link><br/>
               <Link to="/bank-of-react//credits">Credits</Link><br/>
 
-              <Link to="/bank-of-react//login">Login</Link>
+              <Link to="/bank-of-react/login">Login</Link>
 
               <AccountBalance accountBalance={this.props.accountBalance}/>
             </div>
