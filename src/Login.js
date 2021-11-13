@@ -32,7 +32,7 @@ class LogIn extends Component {
   render () {
     if (this.state.redirect) {
       //send user to userProfile on redirect
-      return (<Redirect to="/bank-of-react/userProfile"/>)
+      return (<Redirect to="/bank-of-react"/>)
     }
 
     return (
