@@ -120,7 +120,8 @@ addDebit = (e) => {
 
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn}/>)
     return (
-        <Router>
+      <div>POOOOP</div>
+        /*<Router>
           <div>
             <Route exact path="/bank-of-react" render={HomeComponent}/>
             <Route exact path="/bank-of-react/userProfile" render={UserProfileComponent}/>
@@ -128,7 +129,7 @@ addDebit = (e) => {
             <Route exact path="/bank-of-react/debits" render={DebitsComponent}/>
             <Route exact path="/bank-of-react/credits" render={CreditsComponent}/>
           </div>
-        </Router>
+        </Router>*/
     );
   }
 
