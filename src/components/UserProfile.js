@@ -12,7 +12,7 @@ class UserProfile extends Component{
                 </h1>
                 <div>Username: {this.props.userName}</div>
                 <div>Member Since: {this.props.memberSince}</div>
-                <Link to="/">Return to Home</Link>
+                <Link to="/bank-of-react">Return to Home</Link>
 
             </div>
         );
